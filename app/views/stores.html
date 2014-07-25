@@ -1,0 +1,64 @@
+<div>
+  <h1>Stores
+    <a href="#/stores/add" type="button" class="btn btn-default">
+      <span class="glyphicon glyphicon-star"></span> New
+    </a>
+  </h1>
+
+
+  <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Store Name</th>
+          <th>Features</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="store in stores">
+          <td>{{$index+1}}</td>
+          <td>{{store.name}}</td>
+          <td>
+          	<span class="btn-group">
+				<button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
+					Import Products <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu" role="menu">
+					<li><a href="#{{store.id}}/action1/{{store.name}}">Action 1</a></li>
+					<li><a href="#{{store.id}}/another/{{store.name}}">Another action</a></li>
+					<li><a href="#{{store.id}}/something_else/{{store.name}}">Something else here</a></li>
+					<li class="divider"></li>
+					<li><a href="#{{store.id}}/{{store.name}}">Separated link</a></li>
+				</ul>
+			</span>
+			<button type="button" class="btn btn-default btn-sm">Themes</button>
+			<button type="button" class="btn btn-default btn-sm">Addons</button>
+			<a href="{{store.adminpanel}}" target="_blank" class="btn btn-default btn-sm">Admin Panel</a>
+			<a href="{{store.frontstore}}"  target="_blank" class="btn btn-default btn-sm">Frontstore</a>
+			<a href="#/stores/edit/{{$index}}" type="button" class="btn btn-default btn-sm">Edit</a>
+			<button type="button" class="btn btn-default btn-sm" ng-click="delete({{$index}})">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+
+<script type="text/ng-template" id="myModalContent.html">
+    <div class="modal-header">
+        <h3 class="modal-title">Do you want to delete selected store?</h3>
+    </div>
+    <div class="modal-body">
+	    <span>ID</span>&nbsp;<span>{{store.id}}</span>
+	    <br>
+        <span>Title</span>&nbsp;<span>{{store.name}}</span>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="ok()">DELETE</button>
+        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+    </div>
+</script>
+
+
+<br>
+
+</div>
